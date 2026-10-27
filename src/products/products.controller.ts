@@ -6,7 +6,7 @@ import { hostname } from 'node:os';
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
-  @Get('products')
+  @Get()
   getProducts() {
     return {
       instanceId: process.env.INSTANCE_ID ?? hostname(),
