@@ -22,4 +22,12 @@ export class ProductsController {
       instanceId: process.env.INSTANCE_ID ?? hostname(),
     };
   }
+
+  @Get('report')
+  getReport() {
+    return {
+      instanceId: process.env.INSTANCE_ID ?? hostname(),
+      ...this.productsService.generateReport(),
+    };
+  }
 }

@@ -11,4 +11,24 @@ export class ProductsService {
   findAll() {
     return this.products;
   }
+
+  generateReport() {
+    const startedAt = Date.now();
+    const sampleSize = 2_000_000;
+
+    let total = 0;
+
+    for (let i = 1; i <= sampleSize; i++) {
+      // Генеруємо й обробляємо значення без великого масиву в пам’яті.
+      const value = Math.sqrt(i) * (1 + Math.sin(i) ** 2);
+      total += value;
+    }
+
+    return {
+      sampleSize,
+      total,
+      mean: total / sampleSize,
+      computationMs: Date.now() - startedAt,
+    };
+  }
 }
